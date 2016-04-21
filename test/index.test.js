@@ -1,12 +1,18 @@
 import test from 'ava'
-import obfuscate from '../src'
+import mask from '../src'
 
 test((t) => {
-  t.is(obfuscate('testing'), 't******')
-  t.is(obfuscate('testing', { character: '%' }), 't%%%%%%')
-  t.is(obfuscate('testing', { keep: 3 }), 'tes****')
-  t.is(obfuscate('testing', { direction: 'right', keep: 5 }), '**sting')
+  t.is(mask('testing'), 't******')
+  t.is(mask('testing', { keep: 3 }), 'tes****')
+  t.is(mask('testing', { character: '%' }), 't%%%%%%')
+  t.is(mask('testing-testing'), 't**************')
+  t.is(mask('testing-testing', { alphanumeric: true }), 't******-*******')
+  t.is(mask('testing', { direction: 'right' }), '******g')
+  t.is(mask('testing-testing', { direction: 'right', alphanumeric: true }), '*******-******g')
+  t.is(mask('4242-4242-4242-4242', { keep: 4 }), '4242***************')
+  t.is(mask('4242-4242-4242-4242', { keep: 4, alphanumeric: true }), '4242-****-****-****')
+  t.is(mask('4242-4242-4242-4242', { keep: 4, alphanumeric: true, direction: 'right' }), '****-****-****-4242')
 
-  t.throws(() => obfuscate(), Error)
-  t.throws(() => obfuscate('testing', { direction: 'up' }), Error)
+  t.throws(() => mask(), Error)
+  t.throws(() => mask('testing', { direction: 'up' }), Error)
 })

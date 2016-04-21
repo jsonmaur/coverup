@@ -19,14 +19,17 @@ var mask = require('mask')
 mask('secret')
 //=> s*****
 
-mask('4242424242424242', { keep: 4 })
-//=> 4242************
-
-mask('4242424242424242', { keep: 4, direction: 'right' })
-//=> ************4242
-
 mask('secret', { character: '%' })
 //=> s%%%%%
+
+mask('4242-4242-4242-4242', { keep: 4 })
+//=> 4242***************
+
+mask('4242-4242-4242-4242', { keep: 4, direction: 'right' })
+//=> ***************4242
+
+mask('4242-4242-4242-4242', { keep: 4, alphanumeric: true })
+//=> 4242-****-****-****
 ```
 
 ## API
@@ -52,6 +55,13 @@ mask('secret', { character: '%' })
 
     > Type: `string`  
     > Default: `*`
+
+  - **alphanumeric** - Whether you want to mask all characters, or only alphanumeric characters. When set to `true`, only alphanumeric characters will be masked.
+
+    > Type: `boolean`  
+    > Default: `false`
+
+
 
 <a name="license"></a>
 ## License

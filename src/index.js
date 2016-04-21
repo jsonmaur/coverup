@@ -33,18 +33,17 @@ module.exports = function mask (value, options = {}) {
   // mask
   // ---------------------------------------------------------------------------
 
-  let masked = options.direction === 'left'
-    ? value.substring(0, options.keep) : ''
+  const regex = options.alphanumeric ? /[a-zA-Z0-9]/g : /(.)/g
 
-  let i = -1
-  const length = value.length - options.keep
-  while (++i < length) {
-    masked += options.character
-  }
-
+  let chunk1, chunk2
   if (options.direction === 'right') {
-    masked += value.slice(options.keep * -1)
+    const length = value.length - options.keep
+    chunk1 = value.substring(0, length).replace(regex, options.character)
+    chunk2 = value.substring(length)
+  } else {
+    chunk1 = value.substring(0, options.keep)
+    chunk2 = value.substring(options.keep).replace(regex, options.character)
   }
 
-  return masked
+  return chunk1 + chunk2
 }
