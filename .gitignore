@@ -3,3 +3,4 @@ npm-debug.log
 coverage
 lib
 .nyc_output
+mask.min.js
