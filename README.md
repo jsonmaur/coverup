@@ -10,7 +10,7 @@ Obfuscates a string by converting characters to asterisks. Works well for maskin
 ## How to Use
 
 ```bash
-npm install mask --save
+npm install [NPM-NAME-IS-PENDING] --save
 ```
 
 ```javascript
