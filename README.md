@@ -17,19 +17,19 @@ npm install [NPM-NAME-IS-PENDING] --save
 var mask = require('mask')
 
 mask('secret')
-//=> s*****
+//=> ******
 
-mask('secret', { character: '%' })
-//=> s%%%%%
+mask('secret', { char: '%' })
+//=> %%%%%%
 
-mask('4242-4242-4242-4242', { keep: 4 })
+mask('4242-4242-4242-4242', { keepLeft: 4 })
 //=> 4242***************
 
-mask('4242-4242-4242-4242', { keep: 4, direction: 'right' })
+mask('4242-4242-4242-4242', { keepRight: 4 })
 //=> ***************4242
 
-mask('4242-4242-4242-4242', { keep: 4, alphanumeric: true })
-//=> 4242-****-****-****
+mask('4242-4242-4242-4242', { keepSymbols: true })
+//=> ****-****-****-****
 ```
 
 #### UMD
@@ -50,27 +50,25 @@ You can also access the UMD version by using [npmcdn](https://npmcdn.com). This 
   > Type: `string`  
 
 - **options**
-  - **keep** - The number of characters to avoid masking.
+  - **keepLeft** - The number of characters to avoid masking on the left side of the string.
 
     > Type: `integer`  
-    > Default: `1`
+    > Default: `0`
 
-  - **direction** - The side of the string to keep characters on. Must be set to either `left` or `right`.
+  - **keepRight** - The number of characters to avoid masking on the right side of the string.
 
-    > Type: `string`  
-    > Default: `left`
+    > Type: `integer`  
+    > Default: `0`
 
-  - **character** - The character to use when masking.
-
-    > Type: `string`  
-    > Default: `*`
-
-  - **alphanumeric** - Whether you want to mask all characters, or only alphanumeric characters. When set to `true`, only alphanumeric characters will be masked.
+  - **keepSymbols** - Whether you want to ignore symbols when masking. When set to `true`, only alphanumeric characters will be masked.
 
     > Type: `boolean`  
     > Default: `false`
 
+  - **char** - The character to use when masking.
 
+    > Type: `string`  
+    > Default: `*`
 
 <a name="license"></a>
 ## License

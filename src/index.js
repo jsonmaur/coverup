@@ -8,9 +8,9 @@ module.exports = function mask (value, options = {}) {
   // option defaults
   // ---------------------------------------------------------------------------
 
-  options.keep = options.keep || 1
-  options.direction = options.direction || 'left'
-  options.character = options.character || '*'
+  options.char = options.char || '*'
+  options.keepLeft = options.keepLeft || 0
+  options.keepRight = options.keepRight || 0
 
   // ---------------------------------------------------------------------------
   // type casting and checks
@@ -21,29 +21,27 @@ module.exports = function mask (value, options = {}) {
   }
 
   value = String(value)
-
-  options.keep = Math.floor(parseInt(options.keep, 10))
-  options.character = String(options.character)
-
-  if (!options.direction.match(/^(left|right)$/)) {
-    throw new Error('direction must be either "left" or "right"')
-  }
+  options.char = String(options.char)
+  options.keepLeft = Math.floor(parseInt(options.keepLeft, 10))
+  options.keepRight = Math.floor(parseInt(options.keepRight, 10))
 
   // ---------------------------------------------------------------------------
   // mask
   // ---------------------------------------------------------------------------
 
-  const regex = options.alphanumeric ? /[a-zA-Z0-9]/g : /(.)/g
+  const regex = options.keepSymbols ? /[a-zA-Z0-9]/g : /(.)/g
 
-  let chunk1, chunk2
-  if (options.direction === 'right') {
-    const length = value.length - options.keep
-    chunk1 = value.substring(0, length).replace(regex, options.character)
-    chunk2 = value.substring(length)
-  } else {
-    chunk1 = value.substring(0, options.keep)
-    chunk2 = value.substring(options.keep).replace(regex, options.character)
+  let masked = value.replace(regex, options.char)
+
+  if (options.keepLeft > 0) {
+    masked = value.substring(0, options.keepLeft) +
+      masked.substring(options.keepLeft)
   }
 
-  return chunk1 + chunk2
+  if (options.keepRight > 0) {
+    masked = masked.slice(0, options.keepRight * -1) +
+      value.substring(value.length - options.keepRight)
+  }
+
+  return masked
 }

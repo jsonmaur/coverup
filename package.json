@@ -33,9 +33,9 @@
     "test": "cross-env NODE_ENV=testing nyc ava -a",
     "posttest": "nyc report -r=lcov",
     "coveralls": "cat coverage/lcov.info | coveralls",
-    "build": "rm -rf lib && babel src -d lib --no-comments",
+    "build:node": "rm -rf lib && babel src -d lib --no-comments",
     "build:umd": "webpack -p",
-    "prepublish": "npm run build:umd && npm run build"
+    "prepublish": "npm-run-all --parallel build:*"
   },
   "devDependencies": {
     "ava": "0.14.0",
@@ -46,6 +46,7 @@
     "coveralls": "2.11.9",
     "cross-env": "1.0.7",
     "exlint": "0.1.0",
+    "npm-run-all": "1.7.0",
     "nyc": "6.4.0",
     "webpack": "1.13.0"
   },
