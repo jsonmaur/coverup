@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   entry: './src/index',
   output: {
     path: __dirname,
