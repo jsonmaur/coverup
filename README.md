@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.org/jsonmaur/mask.js.svg?branch=master)](https://travis-ci.org/jsonmaur/mask.js)
 [![Coverage Status](https://coveralls.io/repos/github/jsonmaur/mask.js/badge.svg?branch=master)](https://coveralls.io/github/jsonmaur/mask.js?branch=master)
 
-Obfuscates a string by converting characters to asterisks. Works well for masking credit card numbers, API keys, or any other sensitive info you don't want to show in its entirety. Works in Node.js and browsers.
+Obfuscates a string by converting characters to asterisks (or any other character). Works well for masking credit card numbers, API keys, or any other sensitive info you don't want to show in its entirety. Works in Node.js and browsers.
 
-> Note: This library doesn't keep your info secure, it simply prevents users from seeing an entire string when it is displayed. Please make sure you take the correct precautions when dealing with sensitive info in your app.
+> *Note: This library doesn't keep your info secure, it simply prevents users from seeing an entire string when it is displayed. Please make sure you take the correct precautions when dealing with sensitive info in your app.*
 
 ## How to Use
 
