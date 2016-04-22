@@ -11,6 +11,7 @@ module.exports = function mask (value, options = {}) {
   options.char = options.char || '*'
   options.keepLeft = options.keepLeft || 0
   options.keepRight = options.keepRight || 0
+  options.keepSymbols = options.keepSymbols || false
 
   // ---------------------------------------------------------------------------
   // type casting and checks
@@ -24,6 +25,7 @@ module.exports = function mask (value, options = {}) {
   options.char = String(options.char)
   options.keepLeft = Math.floor(parseInt(options.keepLeft, 10))
   options.keepRight = Math.floor(parseInt(options.keepRight, 10))
+  options.keepSymbols = Boolean(options.keepSymbols)
 
   // ---------------------------------------------------------------------------
   // mask

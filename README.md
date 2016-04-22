@@ -5,7 +5,7 @@
 
 Obfuscates a string by converting characters to asterisks. Works well for masking credit card numbers, API keys, or any other sensitive info you don't want to show in its entirety. Works in Node.js and browsers.
 
-> Note: This library doesn't keep your info secure, it simply prevents users from seeing an entire string on the front-end. Please make sure you take the correct precautions when dealing with sensitive info in your backend.
+> Note: This library doesn't keep your info secure, it simply prevents users from seeing an entire string when it is displayed. Please make sure you take the correct precautions when dealing with sensitive info in your app.
 
 ## How to Use
 
@@ -16,20 +16,20 @@ npm install [NPM-NAME-IS-PENDING] --save
 ```javascript
 var mask = require('mask')
 
-mask('secret')
-//=> ******
+mask('4242-4242-4242-4242')
+//=> *******************
 
-mask('secret', { char: '%' })
-//=> %%%%%%
+mask('4242-4242-4242-4242', { char: '%' })
+//=> %%%%%%%%%%%%%%%%%%%
+
+mask('4242-4242-4242-4242', { keepSymbols: true })
+//=> ****-****-****-****
 
 mask('4242-4242-4242-4242', { keepLeft: 4 })
 //=> 4242***************
 
 mask('4242-4242-4242-4242', { keepRight: 4 })
 //=> ***************4242
-
-mask('4242-4242-4242-4242', { keepSymbols: true })
-//=> ****-****-****-****
 ```
 
 #### UMD
@@ -38,7 +38,7 @@ You can also access the UMD version by using [npmcdn](https://npmcdn.com). This 
 
 ```html
 <script src="https://npmcdn.com/[NPM-NAME-IS-PENDING]/mask.min.js"></script>
-<script> Mask('secret') //=> s***** </script>
+<script> Mask('secret') //=> ****** </script>
 ```
 
 ## API
