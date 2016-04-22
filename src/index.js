@@ -11,6 +11,7 @@ module.exports = function mask (value, options = {}) {
   options.char = options.char || '*'
   options.keepLeft = options.keepLeft || 0
   options.keepRight = options.keepRight || 0
+  options.compactTo = options.compactTo || 0
   options.keepSymbols = options.keepSymbols || false
 
   // ---------------------------------------------------------------------------
@@ -21,10 +22,15 @@ module.exports = function mask (value, options = {}) {
     throw new Error('cannot mask an undefined value')
   }
 
+  if (options.compactTo && options.keepSymbols) {
+    throw new Error('you cannot define both compactTo and keepSymbols')
+  }
+
   value = String(value)
   options.char = String(options.char)
   options.keepLeft = Math.floor(parseInt(options.keepLeft, 10))
   options.keepRight = Math.floor(parseInt(options.keepRight, 10))
+  options.compactTo = Math.floor(parseInt(options.compactTo, 10))
   options.keepSymbols = Boolean(options.keepSymbols)
 
   // ---------------------------------------------------------------------------
@@ -43,6 +49,13 @@ module.exports = function mask (value, options = {}) {
   if (options.keepRight > 0) {
     masked = masked.slice(0, options.keepRight * -1) +
       value.substring(value.length - options.keepRight)
+  }
+
+  if (options.compactTo > 0) {
+    masked = masked.replace(
+      new RegExp(`\\${options.char}+`, 'g'),
+      Array(options.compactTo + 1).join(options.char)
+    )
   }
 
   return masked

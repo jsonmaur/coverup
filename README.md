@@ -60,7 +60,12 @@ You can also access the UMD version by using [npmcdn](https://npmcdn.com). This 
     > Type: `integer`  
     > Default: `0`
 
-  - **keepSymbols** - Whether you want to ignore symbols when masking. When set to `true`, only alphanumeric characters will be masked.
+  - **compactTo** - Compact the masking character to a defined length. This cannot be used in conjunction with `keepSymbols`, or an error will be thrown.
+
+    > Type: `integer`  
+    > Default: `0`
+
+  - **keepSymbols** - Whether you want to ignore symbols when masking. When set to `true`, only alphanumeric characters will be masked. This cannot be used in conjunction with `compactTo`, or an error will be thrown.
 
     > Type: `boolean`  
     > Default: `false`

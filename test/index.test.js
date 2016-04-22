@@ -7,6 +7,9 @@ test((t) => {
   t.is(mask('testing', { keepLeft: 3 }), 'tes****')
   t.is(mask('testing', { keepRight: 3 }), '****ing')
   t.is(mask('testing', { keepLeft: 1, keepRight: 1 }), 't*****g')
+  t.is(mask('testingtesting', { keepLeft: 1, keepRight: 1, compactTo: 3 }), 't***g')
+  t.is(mask('testingtesting', { keepLeft: 1, compactTo: 2 }), 't**')
+  t.is(mask('testingtesting', { keepLeft: 1, keepRight: 1, compactTo: 5 }), 't*****g')
   t.is(mask('testing-test-testing'), '********************')
   t.is(mask('testing-test-testing', { keepSymbols: true }), '*******-****-*******')
   t.is(mask('4242-4242-4242-4242', { keepLeft: 4, keepRight: 4, keepSymbols: true }), '4242-****-****-4242')
@@ -16,4 +19,5 @@ test((t) => {
   t.is(mask('test-test', { keepSymbols: '0' }), '****-****')
 
   t.throws(() => mask(), Error)
+  t.throws(() => mask('testing', { compactTo: 2, keepSymbols: true }), Error)
 })
