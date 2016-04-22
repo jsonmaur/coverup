@@ -12,6 +12,7 @@ test((t) => {
   t.is(mask('4242-4242-4242-4242', { keepLeft: 4, keepRight: 4, keepSymbols: true }), '4242-****-****-4242')
   t.is(mask(123), '***')
   t.is(mask('testing', { keepLeft: '1' }), 't******')
+  t.is(mask('testing', { keepLeft: -1 }), '*******')
   t.is(mask('test-test', { keepSymbols: '0' }), '****-****')
 
   t.throws(() => mask(), Error)

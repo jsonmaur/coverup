@@ -1,7 +1,7 @@
 /**
  * Masks a string by converting characters to asterisks.
  * @param {string} value - The value to mask
- * @returns {string}
+ * @return {string}
  */
 module.exports = function mask (value, options = {}) {
   // ---------------------------------------------------------------------------

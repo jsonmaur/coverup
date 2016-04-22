@@ -45,9 +45,9 @@ You can also access the UMD version by using [npmcdn](https://npmcdn.com). This 
 
 ### mask (value, options)
 
-- **value** - The value you want to mask.
+- **value** - The value you want to mask. If the value specified is not a string, it will be converted to a string.
 
-  > Type: `string`  
+  > Type: `any`  
 
 - **options**
   - **keepLeft** - The number of characters to avoid masking on the left side of the string.
