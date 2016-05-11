@@ -2,9 +2,9 @@ module.exports = {
   entry: './src/index',
   output: {
     path: __dirname,
-    filename: 'mask.min.js',
+    filename: 'coverup.min.js',
     libraryTarget: 'umd',
-    library: 'Mask',
+    library: 'Coverup',
   },
   module: {
     loaders: [
