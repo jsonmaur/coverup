@@ -4,11 +4,11 @@ module.exports = {
     path: __dirname,
     filename: 'coverup.min.js',
     libraryTarget: 'umd',
-    library: 'Coverup',
+    library: 'Coverup'
   },
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel' }
-    ],
-  },
+    ]
+  }
 }
