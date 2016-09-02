@@ -37,10 +37,10 @@ coverup('4242-4242-4242-4242', { keepRight: 4 })
 
 #### UMD
 
-You can also access the UMD version by using [npmcdn](https://npmcdn.com). This will create `Coverup` as a global.
+You can also access the UMD version by using [unpkg](https://unpkg.com). This will create `Coverup` as a global.
 
 ```html
-<script src="https://npmcdn.com/coverup/coverup.min.js"></script>
+<script src="https://unpkg.com/coverup/coverup.min.js"></script>
 <script> Coverup('secret') //=> ****** </script>
 ```
 
