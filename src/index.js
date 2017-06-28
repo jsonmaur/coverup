@@ -15,7 +15,7 @@ module.exports = function coverup (value, options = {}) {
   // ---------------------------------------------------------------------------
 
   if (!value) {
-    throw new Error('cannot conceal an undefined value')
+    return value
   }
 
   if (options.compactTo && options.keepSymbols) {

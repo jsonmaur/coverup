@@ -17,7 +17,8 @@ test((t) => {
   t.is(coverup('testing', { keepLeft: '1' }), 't******')
   t.is(coverup('testing', { keepLeft: -1 }), '*******')
   t.is(coverup('test-test', { keepSymbols: '0' }), '****-****')
+  t.is(coverup(''), '')
+  t.is(coverup(), undefined)
 
-  t.throws(() => coverup(), Error)
   t.throws(() => coverup('testing', { compactTo: 2, keepSymbols: true }), Error)
 })
